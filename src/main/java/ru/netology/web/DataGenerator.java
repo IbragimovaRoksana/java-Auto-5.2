@@ -24,6 +24,12 @@ public class DataGenerator {
             User value = new User(faker.name().username(), faker.internet().password(), "blocked");
             return value;
         }
+
+        public static User RegistrationVasyaUser() {
+
+            User value = new User("vasya", "password", "active");
+            return value;
+        }
     }
 
 

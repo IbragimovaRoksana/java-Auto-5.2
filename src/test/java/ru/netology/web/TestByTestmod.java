@@ -8,6 +8,7 @@ import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
+
 public class TestByTestmod {
     @BeforeEach
     void setUp() {
@@ -21,7 +22,17 @@ public class TestByTestmod {
         $("[data-test-id=login] .input__control").setValue(userActive.getName());
         $("[data-test-id=password] .input__control").setValue(userActive.getPassword());
         $("[data-test-id=action-login]").click();
-        //TODO проверка корректно введенных данных активного пользователя
+        $(withText("Личный кабинет")).shouldBe(Condition.visible);
+    }
+
+    @Test
+    void shouldValidActiveUser1() {
+        User userVasya = DataGenerator.Registration.RegistrationVasyaUser();
+        //Request.setUpAll(userVasya);
+        $("[data-test-id=login] .input__control").setValue(userVasya.getName());
+        $("[data-test-id=password] .input__control").setValue(userVasya.getPassword());
+        $("[data-test-id=action-login]").click();
+        $(withText("Личный кабинет")).shouldBe(Condition.visible);
     }
 
     @Test
@@ -31,7 +42,7 @@ public class TestByTestmod {
         $("[data-test-id=login] .input__control").setValue(userBlocked.getName());
         $("[data-test-id=password] .input__control").setValue(userBlocked.getPassword());
         $("[data-test-id=action-login]").click();
-        //TODO проверка корректно введенных данных заблокированного пользователя
+        $(withText("Пользователь заблокирован")).shouldBe(Condition.visible);
     }
 
     @Test

@@ -17,8 +17,7 @@ public class Request {
             .log(LogDetail.ALL)
             .build();
 
-    private Request() {
-    }
+    private Request() {}
 
     static void setUpAll(User userInfo) {
         // сам запрос
