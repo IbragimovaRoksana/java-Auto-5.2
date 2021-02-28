@@ -19,7 +19,7 @@ public class TestByTestmod {
     void shouldValidActiveUser() {
         User userActive = DataGenerator.Registration.RegistrationActiveUser();
         Request.setUpAll(userActive);
-        $("[data-test-id=login] .input__control").setValue(userActive.getName());
+        $("[data-test-id=login] .input__control").setValue(userActive.getLogin());
         $("[data-test-id=password] .input__control").setValue(userActive.getPassword());
         $("[data-test-id=action-login]").click();
         $(withText("Личный кабинет")).shouldBe(Condition.visible);
@@ -28,8 +28,8 @@ public class TestByTestmod {
     @Test
     void shouldValidActiveUser1() {
         User userVasya = DataGenerator.Registration.RegistrationVasyaUser();
-        //Request.setUpAll(userVasya);
-        $("[data-test-id=login] .input__control").setValue(userVasya.getName());
+        Request.setUpAll(userVasya);
+        $("[data-test-id=login] .input__control").setValue(userVasya.getLogin());
         $("[data-test-id=password] .input__control").setValue(userVasya.getPassword());
         $("[data-test-id=action-login]").click();
         $(withText("Личный кабинет")).shouldBe(Condition.visible);
@@ -39,7 +39,7 @@ public class TestByTestmod {
     void shouldValidBlockedUser() {
         User userBlocked = DataGenerator.Registration.RegistrationBlockedUser();
         Request.setUpAll(userBlocked);
-        $("[data-test-id=login] .input__control").setValue(userBlocked.getName());
+        $("[data-test-id=login] .input__control").setValue(userBlocked.getLogin());
         $("[data-test-id=password] .input__control").setValue(userBlocked.getPassword());
         $("[data-test-id=action-login]").click();
         $(withText("Пользователь заблокирован")).shouldBe(Condition.visible);
@@ -60,7 +60,7 @@ public class TestByTestmod {
     void shouldSendWrongPassword() {
         User userActive = DataGenerator.Registration.RegistrationActiveUser();
         Request.setUpAll(userActive);
-        $("[data-test-id=login] .input__control").setValue(userActive.getName());
+        $("[data-test-id=login] .input__control").setValue(userActive.getLogin());
         $("[data-test-id=password] .input__control").setValue("asdfvcxz");
         $("button[data-test-id=action-login]").click();
         $(withText("Неверно указан логин или пароль")).shouldBe(Condition.visible);
