@@ -13,19 +13,19 @@ public class DataGenerator {
         private Registration() {
         }
 
-        public static User RegistrationActiveUser() {
+        public static User registrationActiveUser() {
             Faker faker = new Faker(new Locale("en"));
             User value = new User(faker.name().username(), faker.internet().password(), "active");
             return value;
         }
 
-        public static User RegistrationBlockedUser() {
+        public static User registrationBlockedUser() {
             Faker faker = new Faker(new Locale("en"));
             User value = new User(faker.name().username(), faker.internet().password(), "blocked");
             return value;
         }
 
-        public static User RegistrationVasyaUser() {
+        public static User registrationVasyaUser() {
 
             User value = new User("vasya", "password", "active");
             return value;
